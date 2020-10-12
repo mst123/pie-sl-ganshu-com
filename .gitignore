@@ -1,0 +1,29 @@
+.DS_Store
+node_modules
+/dist
+/lib
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+lib/piesat-water-vue-common-header.common.js
+lib/piesat-water-vue-common-header.common.js.map
+lib/piesat-water-vue-common-header.css
+lib/piesat-water-vue-common-header.umd.js
+lib/piesat-water-vue-common-header.umd.js.map
+lib/piesat-water-vue-common-header.umd.min.js
+lib/piesat-water-vue-common-header.umd.min.js.map
