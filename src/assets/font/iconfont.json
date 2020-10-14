@@ -1,0 +1,44 @@
+{
+  "id": "2027593",
+  "name": "甘肃",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "477621",
+      "name": "主页",
+      "font_class": "zhuye",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "7071082",
+      "name": "问号",
+      "font_class": "wenhao",
+      "unicode": "e642",
+      "unicode_decimal": 58946
+    },
+    {
+      "icon_id": "7849721",
+      "name": "退出",
+      "font_class": "tuichu",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "10774569",
+      "name": "铃铛",
+      "font_class": "lingdang",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "9866178",
+      "name": "视角场",
+      "font_class": "shijiaochang",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    }
+  ]
+}

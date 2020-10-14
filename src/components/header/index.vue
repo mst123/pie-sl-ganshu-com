@@ -3,6 +3,7 @@
     <div class="headerLogo">
       <div class="logo"></div>
       <div class="logo-title">
+        {{title}}
       </div>
     </div>
     <el-menu
@@ -16,26 +17,45 @@
     >
       <template v-for="(item, index) of menuList">
         <template v-if="!(item.sysMenuList&&item.sysMenuList.length)">
-          <el-menu-item :index="item.menuUrl" :key="index">{{item.menuTitle}}</el-menu-item>
+          <el-menu-item :index="item.menuUrl" :key="index">
+            <img class="icon-bg" :src="item.menuIcon" alt="" srcset="">
+            {{item.menuTitle}}
+          </el-menu-item>
         </template>
         <template v-else>
           <el-submenu popper-class="menu-popper" :index="'disabled'+index" :key="index">
-            <template slot="title">{{item.menuTitle}}</template>
-            <el-menu-item v-for="(itemC, indexC) of item.sysMenuList" :index="itemC.menuUrl" :key="indexC+'-'+index">{{itemC.menuTitle}}</el-menu-item>
+            <template slot="title">
+              <img class="icon-bg" :src="item.menuIcon" alt="" srcset="">
+              {{item.menuTitle}}
+            </template>
+            <el-menu-item v-for="(itemC, indexC) of item.sysMenuList" :index="itemC.menuUrl" :key="indexC+'-'+index">
+              {{itemC.menuTitle}}
+            </el-menu-item>
           </el-submenu>
         </template>
       </template>
     </el-menu>
     <div class="admin">
       <el-tooltip content="退出登录" placement="bottom" effect="light">
-        <i @click="logout" class="el-icon-switch-button exit"></i>
+        <i @click="logout" class="iconfont icon-tuichu"></i>
       </el-tooltip>
+      <el-tooltip content="主页" placement="bottom" effect="light">
+        <i @click="goHome" class="iconfont icon-zhuye"></i>
+      </el-tooltip>
+      <span class="line"></span>
       <el-tooltip
         :content="`欢迎您，${roleName}`"
         placement="bottom"
         effect="light"
       >
-        <el-avatar class="admin-img" size="small" :src="circleUrl"></el-avatar>
+        <span class="admin-name">{{roleName}}</span>
+      </el-tooltip>
+      <el-avatar class="admin-img" size="small" :src="circleUrl"></el-avatar>
+      <el-tooltip content="帮助" placement="bottom" effect="light">
+        <i class="iconfont icon-wenhao"></i>
+      </el-tooltip>
+      <el-tooltip content="消息" v-if="msgVisible" placement="bottom" effect="light">
+        <i class="iconfont icon-lingdang"></i>
       </el-tooltip>
     </div>
   </div>
@@ -50,10 +70,14 @@ export default {
     };
   },
   mounted() {
+
   },
   methods: {
     logout() {
       window.open(this.baseURL + "cas/logout", "_self");
+    },
+    goHome() {
+      
     }
   },
   components: {},
@@ -69,6 +93,14 @@ export default {
     roleName: {
       require: true,
       type: String
+    },
+    title: {
+      require: true,
+      type: String
+    },
+    msgVisible: {
+      type: Boolean,
+      default: true
     }
   }
 };
@@ -81,7 +113,7 @@ export default {
   flex-flow: row;
   background: url("../../assets/img/headerBag.png") no-repeat center;
   .headerLogo {
-    width: 650px;
+    min-width: 350px;
     line-height: 64px;
     font-size: 24px;
     text-align: center;
@@ -92,13 +124,16 @@ export default {
       width: 30px;
       background: url("../../assets/img/logo.svg") no-repeat center;
       background-size: contain;
-      margin: 0 9px;
+      margin: 0 10px;
     }
-    .logo-title {
+    .logo-title{
+      float: left;
       height: 100%;
-      margin-top:2px;
-      background: url("../../assets/img/logTitle.png") no-repeat center;
-
+      min-width: 300px;
+      line-height: 64px;
+      font-size: 26px;
+      text-align: left;
+      padding: 0 30px 0 0;
     }
   }
   /deep/ .menu-content {
@@ -109,48 +144,72 @@ export default {
       height: 64px;
       line-height: 64px;
       border-width: 4px;
+      font-size: 18px;
       &:hover{
         background-color: transparent!important;
       }
-      &.is-active{
+      /* &.is-active{
         font-weight: 900;
-      }
+      } */
     }
     .el-submenu{
       .el-submenu__icon-arrow{
         color: #ffffff;
         display: none;
       }
-      &.is-active{
+      /* &.is-active{
         font-weight: 900;
         .el-submenu__title{
           font-weight: 900;
         }
-      }
+      } */
       .el-submenu__title{
         height: 64px;
         line-height: 64px;
+        font-size: 18px;
         border-width: 4px;
         &:hover{
           background-color: transparent!important;
         }
       }
     }
+    .icon-bg{
+      display: inline-block;
+      height: 18px;
+      width: 18px;
+      margin-right: 8px;
+    }
   }
   .admin {
-    width: 140px;
-    line-height: 30px;
+    min-width: 140px;
+    line-height: 64px;
     .admin-img {
-      margin-top: 16px;
+      margin-top: 19px;
       float: right;
       cursor: pointer;
     }
-    .exit {
-      font-size: 30px;
+    .admin-name{
+      line-height: 64px;
+      float: right;
+      color: #ffffff;
+      font-size: 18px;
+      padding: 0 10px;
+    }
+    span.line{
+      width: 1px;
+      height: 24px;
+      float: right;
+      position: relative;
+      top: 20px;
+      background: #ffffff;
+      margin: 0 16px;
+    }
+    .iconfont{
+      font-size: 24px;
       cursor: pointer;
       color: #ffffff;
       float: right;
-      margin: 15px;
+      margin-right: 16px;
     }
   }
 }

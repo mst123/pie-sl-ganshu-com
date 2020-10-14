@@ -2,11 +2,16 @@ import MainHeader from './components/header/index.vue'
 import TitleBarLine from './components/title-bar/title-bar-line.vue'
 import TitleBarRound from './components/title-bar/title-bar-round.vue'
 import ElTableEX from './components/table/el-table-ex.vue'
+import ElDrawerSelf from './components/drawer/el-drawer-self.vue'
+import ElDDialogSelf from './components/dialog/el-dialog-self.vue'
+import './assets/font/iconfont.css'
 const components = [
   MainHeader,
   TitleBarLine,
   TitleBarRound,
-  ElTableEX
+  ElTableEX,
+  ElDrawerSelf,
+  ElDDialogSelf
 ]
 /**
  * 绑定组件
@@ -25,6 +30,8 @@ export default {
   MainHeader,
   TitleBarLine,
   TitleBarRound,
-  ElTableEX
+  ElTableEX,
+  ElDrawerSelf,
+  ElDDialogSelf
 }
 

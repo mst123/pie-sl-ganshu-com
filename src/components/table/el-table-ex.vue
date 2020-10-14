@@ -80,6 +80,12 @@ export default {
         background-color: #F4F7FD;
       }
     }
+    .el-table__body tr:hover>td{
+      background-color: #F0F8FF;
+    }
+    .el-table__body tr.current-row>td{
+      background-color: #F0F8FF;
+    }
   }
 }
 </style>
