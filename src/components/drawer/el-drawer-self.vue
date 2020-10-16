@@ -1,5 +1,6 @@
 <template>
   <el-drawer
+    style="top: 64px;"
     class="el-drawer-self"
     v-bind="computedProp"
     v-on="$listeners"
@@ -34,7 +35,6 @@ export default {
       let computedProp = Object.assign(
         {
           'append-to-body': true,
-          modal: false,
           size: this.small?"440px":"1200px",
           direction: "rtl",
           'before-close': this.beforeClose
@@ -88,7 +88,7 @@ export default {
     border-left: 4px solid #00B9EF;
   }
   .el-drawer__body{
-    padding:0px 19px 19px 19px;
+    padding: 15px;
   }
 }
 </style>

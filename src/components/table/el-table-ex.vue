@@ -45,7 +45,8 @@ export default {
         {
           size: "small",
           "cell-style": {
-            height: "54px"
+            height: "54px",
+            "font-size": "14px"
           },
           "header-row-style": {
             height: "54px",

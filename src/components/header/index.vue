@@ -216,14 +216,20 @@ export default {
 </style>
 <style lang="scss">
   .menu-popper{
-    background: #ffffff;
+    background: #2DC2F5;
     .el-menu--popup{
-      min-width: 116px;
+      min-width: 144px;
     }
     .el-menu-item{
-      color: #000000!important;
+      color: #ffffff!important;
+      font-size: 16px;
+      text-align: center;
       &.is-active{
-        color: #409EFF!important;
+        background-color: #15BDEA!important;
+        font-weight: bold;
+      }
+      &:hover{
+        background-color: #15BDEA!important;
       }
     }
   }

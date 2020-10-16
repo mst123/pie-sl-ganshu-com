@@ -39,7 +39,7 @@ p.title-bar-line {
     position: relative;
     top: 3px;
     margin-right: 8px;
-    background: #2862B9;
+    background: #00B9EF;
   }
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
   <el-dialog
+    class="el-dialog-self"
     v-bind="computedProp"
     v-on="$listeners"
   > 
@@ -66,5 +67,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss' scoped>
-  
+  .el-dialog-self{
+    /deep/ .el-dialog__title{
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
 </style>
