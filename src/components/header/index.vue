@@ -77,7 +77,7 @@ export default {
       window.open(this.baseURL + "cas/logout", "_self");
     },
     goHome() {
-      
+      location.href = this.homeUrl;
     }
   },
   components: {},
@@ -101,6 +101,10 @@ export default {
     msgVisible: {
       type: Boolean,
       default: true
+    },
+    homeUrl: {
+      type: Boolean,
+      default: "http://121.37.9.35:8080/wasc-admin-fortwo/"
     }
   }
 };
