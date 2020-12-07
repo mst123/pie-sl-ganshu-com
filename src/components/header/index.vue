@@ -51,9 +51,35 @@
         <span class="admin-name">{{roleName}}</span>
       </el-tooltip>
       <el-avatar class="admin-img" size="small" :src="circleUrl"></el-avatar>
-      <el-tooltip content="帮助" placement="bottom" effect="light">
-        <i class="iconfont icon-wenhao"></i>
-      </el-tooltip>
+      <el-popover
+        placement="bottom"
+        width="100"
+        effect="light"
+        trigger="hover"
+        popper-class="header-help"
+      >
+        <div class="list">
+          <span class="icon-content">
+            <i class="el-icon-document"></i>
+          </span>
+          <span @click="openDocument" class="text">用户手册</span>
+        </div>
+        <div class="list">
+          <span class="icon-content">
+            <i class="el-icon-warning"></i>
+          </span>
+          <el-tooltip
+            class="item"
+            effect="light"
+            :offset="7"
+            :content="version"
+            placement="right"
+          >
+            <span class="text">版本号</span>
+          </el-tooltip>
+        </div>
+        <i class="iconfont icon-wenhao" slot="reference"></i>
+      </el-popover>
       <el-tooltip content="消息" v-if="msgVisible" placement="bottom" effect="light">
         <i class="iconfont icon-lingdang"></i>
       </el-tooltip>
@@ -78,6 +104,9 @@ export default {
     },
     goHome() {
       location.href = this.homeUrl;
+    },
+    openDocument() {
+      window.open(this.documentUrl);
     }
   },
   components: {},
@@ -103,9 +132,18 @@ export default {
       default: true
     },
     homeUrl: {
-      type: Boolean,
-      default: "http://121.37.9.35:8080/wasc-admin-fortwo/"
-    }
+      type: String,
+      default: "http://121.37.9.35:8080/wasc-admin/"
+    },
+    version: {
+      //版本号
+      type: String,
+      default: "v.1.1.0"
+    },
+    documentUrl: {
+      // 用户手册
+      type: String
+    },
   }
 };
 </script>
@@ -116,6 +154,7 @@ export default {
   display: flex;
   flex-flow: row;
   background: url("../../assets/img/headerBag.png") no-repeat center;
+  background-size: 100% 100%;
   .headerLogo {
     min-width: 350px;
     line-height: 64px;
@@ -237,4 +276,38 @@ export default {
       }
     }
   }
+.header-help {
+  min-width: 100px !important;
+  box-sizing: content-box;
+  border: 0 !important;
+  .list {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    box-sizing: border-box;
+    color: #000000;
+  }
+  span.icon-content {
+    height: 30px;
+    line-height: 30px;
+    width: 30px;
+    float: left;
+    i {
+      font-size: 20px;
+      line-height: 30px;
+      display: inline-block;
+    }
+  }
+  span.text {
+    float: right;
+    height: 30px;
+    width: 70px;
+    line-height: 30px;
+    cursor: pointer;
+  }
+  .popper__arrow::after {
+    left: 50% !important;
+  }
+}
 </style>
