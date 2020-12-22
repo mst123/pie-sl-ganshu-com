@@ -91,6 +91,7 @@
 
 <script>
 import axios from "axios";
+import "../../assets/font/iconfont.css"
 export default {
   name: "MainHeader",
   data() {
@@ -103,7 +104,7 @@ export default {
   },
   methods: {
     logout() {
-      if(window.SITE_CONFIG.YUNLI_TOKEN){
+      if(window.SITE_CONFIG && window.SITE_CONFIG.YUNLI_TOKEN){
         this.exitYunli();
       }else{
         window.open(this.baseURL + "cas/logout", "_self");
@@ -341,6 +342,7 @@ export default {
 }
 .pie-sl-gs-popper-right{
   color: #15BDEA!important;
+  border: 0!important;
   .popper__arrow{
     border-right-color: #ffffff!important;
   }

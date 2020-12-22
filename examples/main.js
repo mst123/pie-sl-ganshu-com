@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import "./plugins/element"
-import piesatCom from "../src/main";
+import piesatCom from "../packages/main";
 Vue.use(piesatCom)
 Vue.config.productionTip = false
 

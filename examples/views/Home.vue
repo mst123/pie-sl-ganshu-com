@@ -58,14 +58,14 @@ export default {
         {
           menuTitle: "任务看板",
           menuUrl: "/",
-          menuIcon: require("../assets/rwkb.png").default,
+          menuIcon: require("../assets/rwkb.png"),
           sysMenuList: [],
           icon: "el-icon-s-home"
         },
         {
           menuTitle: "任务管理",
           url: null,
-          menuIcon: require("../assets/rwgl.png").default,
+          menuIcon: require("../assets/rwgl.png"),
           icon: "el-icon-s-operation",
           sysMenuList: [
             {
@@ -91,7 +91,7 @@ export default {
         {
           menuTitle: "图斑管理",
           url: null,
-          menuIcon: require("../assets/tbgl.png").default,
+          menuIcon: require("../assets/tbgl.png"),
           icon: "el-icon-receiving",
           sysMenuList: [
             {
@@ -110,7 +110,7 @@ export default {
         },
         {
           menuTitle: "设备管理",
-          menuIcon: require("../assets/sbgl.png").default,
+          menuIcon: require("../assets/sbgl.png"),
           url: "/regionSupervise/equipManage",
           sysMenuList: [],
           icon: "el-icon-mobile-phone"
