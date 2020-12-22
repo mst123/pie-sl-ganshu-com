@@ -36,14 +36,15 @@
       </template>
     </el-menu>
     <div class="admin">
-      <el-tooltip content="退出登录" placement="bottom" effect="light">
+      <el-tooltip popper-class="pie-sl-gs-popper" content="退出登录" placement="bottom" effect="light">
         <i @click="logout" class="iconfont icon-tuichu"></i>
       </el-tooltip>
-      <el-tooltip content="主页" placement="bottom" effect="light">
+      <el-tooltip popper-class="pie-sl-gs-popper" content="主页" placement="bottom" effect="light">
         <i @click="goHome" class="iconfont icon-zhuye"></i>
       </el-tooltip>
       <span class="line"></span>
       <el-tooltip
+        popper-class="pie-sl-gs-popper"
         :content="`欢迎您，${roleName}`"
         placement="bottom"
         effect="light"
@@ -56,7 +57,7 @@
         width="100"
         effect="light"
         trigger="hover"
-        popper-class="header-help"
+        popper-class="header-help pie-sl-gs-popper"
       >
         <div class="list">
           <span class="icon-content">
@@ -69,18 +70,19 @@
             <i class="el-icon-warning"></i>
           </span>
           <el-tooltip
+            popper-class="pie-sl-gs-popper-right"
             class="item"
             effect="light"
             :offset="7"
-            :content="version"
+            content="版本号"
             placement="right"
           >
-            <span class="text">版本号</span>
+            <span class="text">{{version}}</span>
           </el-tooltip>
         </div>
         <i class="iconfont icon-wenhao" slot="reference"></i>
       </el-popover>
-      <el-tooltip content="消息" v-if="msgVisible" placement="bottom" effect="light">
+      <el-tooltip popper-class="pie-sl-gs-popper" content="消息" v-if="msgVisible" placement="bottom" effect="light">
         <i class="iconfont icon-lingdang"></i>
       </el-tooltip>
     </div>
@@ -88,6 +90,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "MainHeader",
   data() {
@@ -96,18 +99,36 @@ export default {
     };
   },
   mounted() {
-
+    console.log(window.SITE_CONFIG.YUNLI_TOKEN);
   },
   methods: {
     logout() {
-      window.open(this.baseURL + "cas/logout", "_self");
+      if(window.SITE_CONFIG.YUNLI_TOKEN){
+        this.exitYunli();
+      }else{
+        window.open(this.baseURL + "cas/logout", "_self");
+      }
     },
     goHome() {
-      location.href = this.homeUrl;
+      location.href = this.homeURL;
     },
     openDocument() {
       window.open(this.documentUrl);
-    }
+    },
+    exitYunli(){ // 云粒退出
+      axios({
+        method: 'post',
+        url: this.baseURL + "yunli/logout",
+        headers: {
+          'YL-Token': window.SITE_CONFIG.YUNLI_TOKEN
+        },
+        responseType: 'json'
+      }).then(response => {
+        this.goHome();
+      }).catch(error => {
+        console.log(error)
+      });
+    },
   },
   components: {},
   props: {
@@ -131,9 +152,8 @@ export default {
       type: Boolean,
       default: true
     },
-    homeUrl: {
-      type: String,
-      default: "http://121.37.9.35:8080/wasc-admin/"
+    homeURL: {
+      type: String
     },
     version: {
       //版本号
@@ -143,7 +163,7 @@ export default {
     documentUrl: {
       // 用户手册
       type: String
-    },
+    }
   }
 };
 </script>
@@ -287,6 +307,9 @@ export default {
     text-align: center;
     box-sizing: border-box;
     color: #000000;
+    span{
+      color: #15BDEA!important;
+    }
   }
   span.icon-content {
     height: 30px;
@@ -308,6 +331,18 @@ export default {
   }
   .popper__arrow::after {
     left: 50% !important;
+  }
+}
+.pie-sl-gs-popper{
+  border: 0 !important;
+  .popper__arrow{
+    border-bottom-color: #ffffff!important;
+  }
+}
+.pie-sl-gs-popper-right{
+  color: #15BDEA!important;
+  .popper__arrow{
+    border-right-color: #ffffff!important;
   }
 }
 </style>

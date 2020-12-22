@@ -1,6 +1,6 @@
 {
   "name": "pie-sl-ganshu-com",
-  "version": "0.0.15",
+  "version": "0.0.19",
   "author": "mashitu",
   "private": false,
   "scripts": {
@@ -14,6 +14,7 @@
   ],
   "main": "lib/pie-sl-ganshu-com.common.js",
   "dependencies": {
+    "axios": "^0.21.0",
     "element-resize-detector": "^1.2.1",
     "element-ui": "^2.13.2",
     "vue": "^2.6.11",
