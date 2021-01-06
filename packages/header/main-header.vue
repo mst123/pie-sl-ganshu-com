@@ -100,7 +100,6 @@ export default {
     };
   },
   mounted() {
-    console.log(window.SITE_CONFIG.YUNLI_TOKEN);
   },
   methods: {
     logout() {
@@ -125,7 +124,7 @@ export default {
         },
         responseType: 'json'
       }).then(response => {
-        this.goHome();
+        location.href = this.exitHome;
       }).catch(error => {
         console.log(error)
       });
@@ -156,6 +155,9 @@ export default {
     homeURL: {
       type: String
     },
+    exitHome: {
+      type: String
+    }, 
     version: {
       //版本号
       type: String,
