@@ -124,6 +124,7 @@ export default {
         },
         responseType: 'json'
       }).then(response => {
+        localStorage.removeItem("yunliToken");
         location.href = this.exitHome;
       }).catch(error => {
         console.log(error)
