@@ -19,7 +19,7 @@
       </span>
     </el-dialog-self>
     <el-button @click="drawerVisible=true">打开抽屉</el-button>
-    <el-drawer-self title="数据预览" :visible.sync="drawerVisible"></el-drawer-self>
+    <el-drawer-self  title="数据预览" :visible.sync="drawerVisible"></el-drawer-self>
     <!-- <el-drawer-self small title="数据预览" :visible.sync="drawerVisible"></el-drawer-self> -->
     <div class="table-content" style="height:700px;">
       <el-table-ex

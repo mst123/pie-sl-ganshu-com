@@ -7,7 +7,7 @@
       </div>
     </div>
     <el-menu
-      :default-active="$route.path"
+      :default-active="activeMenu"
       router
       text-color="#ffffff"
       active-text-color="#ffffff"
@@ -85,6 +85,7 @@
       <el-tooltip popper-class="pie-sl-gs-popper" content="消息" v-if="msgVisible" placement="bottom" effect="light">
         <i class="iconfont icon-lingdang"></i>
       </el-tooltip>
+      <slot name="message"></slot>
     </div>
   </div>
 </template>
@@ -133,23 +134,23 @@ export default {
   },
   components: {},
   props: {
-    menuList: {
+    menuList: { // 菜单
       require: true,
       type: Array
     },
-    baseURL: {
+    baseURL: { // 
       require: true,
       type: String
     },
-    roleName: {
+    roleName: { // 用户名
       require: true,
       type: String
     },
-    title: {
+    title: { // 标题 
       require: true,
       type: String
     },
-    msgVisible: {
+    msgVisible: { // 信息组件是否可见
       type: Boolean,
       default: true
     },
@@ -167,6 +168,15 @@ export default {
     documentUrl: {
       // 用户手册
       type: String
+    },
+    hasAsideMenu: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    activeMenu(){ // 同名会有bug 需要特殊统一处理 + "-header"
+      return this.hasAsideMenu ? "/" + this.$route.path.split("/")[1]+"-header" : this.$route.path
     }
   }
 };

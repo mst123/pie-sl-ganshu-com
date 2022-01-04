@@ -52,3 +52,65 @@ ElTableEX
 ElDrawerSelf
 ElDDialogSelf
 ```
+## MainHeader
+
+Props
+
+```
+		menuList: { // 菜单
+      require: true,
+      type: Array
+    },
+    baseURL: { // 后台ip
+      require: true,
+      type: String
+    },
+    roleName: { // 用户名
+      require: true,
+      type: String
+    },
+    title: { // 项目名称
+      require: true,
+      type: String
+    },
+    msgVisible: { // 是否显示信息图标
+      type: Boolean,
+      default: true
+    },
+    homeURL: { // 主页地址
+      type: String
+    },
+    exitHome: { // 退出ip
+      type: String
+    }, 
+    version: {
+      //版本号
+      type: String,
+      default: "v.1.1.0"
+    },
+    documentUrl: {
+      // 用户手册
+      type: String
+    }
+```
+
+## TitleBarLine
+
+```
+<title-bar-line color="red">标题</title-bar-line>
+```
+
+## TitleBarRound
+
+```
+<title-bar-round>标题</title-bar-round>
+```
+
+## ElTableEX
+
+
+
+## ElDrawerSelf
+
+## ElDialogSelf
+
